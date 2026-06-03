@@ -99,5 +99,5 @@ El backend necesita un archivo `.env` con las siguientes variables (ver `backend
 - ✅ `backend/` — API Express con todos los endpoints
 - ✅ `frontend-web/` — Next.js 14 + Tailwind, todas las páginas
 - ✅ `scraper/` — Python + Playwright, scraper de Walmart GT + modo mock + GitHub Action cada 6h
-- ⏳ `mobile/` — pendiente
+- ✅ `mobile/` — Expo + React Native + Expo Router, todas las pantallas
 - ⏳ Bot de Telegram — pendiente

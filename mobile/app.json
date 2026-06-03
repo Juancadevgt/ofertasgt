@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Ofertas GT",
+    "slug": "ofertasgt",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "ofertasgt",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": false,
+    "splash": {
+      "backgroundColor": "#1565c0",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "gt.ofertas.app"
+    },
+    "android": {
+      "package": "gt.ofertas.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#1565c0"
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": false
+    }
+  }
+}
