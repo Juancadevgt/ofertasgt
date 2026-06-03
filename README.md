@@ -29,3 +29,49 @@ ofertas-guatemala/
 - Alertas:       Telegram Bot (gratis)
 
 ## Costo mensual: $0
+
+## Requisitos previos
+- [Node.js](https://nodejs.org/) 18 o superior (incluye npm)
+- [Git](https://git-scm.com/)
+- Una cuenta gratuita en [Supabase](https://supabase.com/) para obtener `SUPABASE_URL` y `SUPABASE_KEY`
+
+## Cómo clonar y configurar el proyecto
+
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/Juancadevgt/ofertasgt.git
+cd ofertasgt
+```
+
+### 2. Configurar el backend
+```bash
+cd backend
+npm install
+cp .env.example .env
+```
+
+Luego edita `backend/.env` y reemplaza los valores con tus credenciales reales de Supabase.
+
+### 3. Ejecutar el backend
+```bash
+npm start
+```
+
+> Nota: el código fuente del backend (`index.js`) aún no está incluido. Una vez creado, el servidor escuchará en el puerto definido en `.env` (por defecto `3000`).
+
+## Variables de entorno
+El backend necesita un archivo `.env` con las siguientes variables (ver `backend/.env.example`):
+
+| Variable       | Descripción                                |
+|----------------|--------------------------------------------|
+| `SUPABASE_URL` | URL del proyecto de Supabase               |
+| `SUPABASE_KEY` | API key (anon o service role) de Supabase  |
+| `PORT`         | Puerto donde escucha el backend (ej. 3000) |
+
+**Importante:** nunca subas tu archivo `.env` al repositorio. Ya está incluido en `.gitignore`.
+
+## Estado de los módulos
+- ✅ `backend/` — dependencias configuradas (Express + Supabase)
+- ⏳ `scraper/` — pendiente de implementar
+- ⏳ `frontend-web/` — pendiente de implementar
+- ⏳ `mobile/` — pendiente de implementar
