@@ -82,6 +82,7 @@ Endpoints disponibles:
 | GET    | `/api/categorias`                   | Lista de categorías                                 |
 | POST   | `/api/alertas`                      | Suscribirse a alertas Telegram para un producto     |
 | DELETE | `/api/alertas/:id`                  | Cancelar una alerta                                 |
+| POST   | `/api/telegram/webhook`             | Webhook que Telegram llama con mensajes del bot     |
 
 ## Variables de entorno
 El backend necesita un archivo `.env` con las siguientes variables (ver `backend/.env.example`):
@@ -100,4 +101,4 @@ El backend necesita un archivo `.env` con las siguientes variables (ver `backend
 - ✅ `frontend-web/` — Next.js 14 + Tailwind, todas las páginas
 - ✅ `scraper/` — Python + Playwright, scraper de Walmart GT + modo mock + GitHub Action cada 6h
 - ✅ `mobile/` — Expo + React Native + Expo Router, todas las pantallas
-- ⏳ Bot de Telegram — pendiente
+- ✅ Bot de Telegram — webhook + job de alertas cada hora (ver [docs/telegram-bot.md](docs/telegram-bot.md))

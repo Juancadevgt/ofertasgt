@@ -107,6 +107,8 @@ create table if not exists public.alertas (
   usuario_telegram_id  text not null,
   precio_objetivo      numeric(10,2),
   activa               boolean not null default true,
+  last_notified_at     timestamptz,
+  last_notified_price  numeric(10,2),
   created_at           timestamptz not null default now(),
   unique (producto_id, usuario_telegram_id)
 );

@@ -3,11 +3,12 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
-const ofertas       = require('./src/routes/ofertas');
-const productos     = require('./src/routes/productos');
-const supermercados = require('./src/routes/supermercados');
-const categorias    = require('./src/routes/categorias');
-const alertas       = require('./src/routes/alertas');
+const ofertas         = require('./src/routes/ofertas');
+const productos       = require('./src/routes/productos');
+const supermercados   = require('./src/routes/supermercados');
+const categorias      = require('./src/routes/categorias');
+const alertas         = require('./src/routes/alertas');
+const telegramWebhook = require('./src/routes/telegramWebhook');
 
 const { PORT = 3000 } = process.env;
 
@@ -28,6 +29,7 @@ app.use('/api/productos',     productos);
 app.use('/api/supermercados', supermercados);
 app.use('/api/categorias',    categorias);
 app.use('/api/alertas',       alertas);
+app.use('/api/telegram',      telegramWebhook);
 
 app.use((req, res) => {
   res.status(404).json({ error: 'Ruta no encontrada' });
