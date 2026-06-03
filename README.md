@@ -31,7 +31,7 @@ ofertas-guatemala/
 ## Costo mensual: $0
 
 ## Requisitos previos
-- [Node.js](https://nodejs.org/) 18 o superior (incluye npm)
+- [Node.js](https://nodejs.org/) 20 o superior (requerido por `@supabase/supabase-js`)
 - [Git](https://git-scm.com/)
 - Una cuenta gratuita en [Supabase](https://supabase.com/) para obtener `SUPABASE_URL` y `SUPABASE_KEY`
 
@@ -54,10 +54,16 @@ Luego edita `backend/.env` y reemplaza los valores con tus credenciales reales d
 
 ### 3. Ejecutar el backend
 ```bash
-npm start
+npm start          # modo normal
+npm run dev        # modo con reinicio automatico al editar (node --watch)
 ```
 
-> Nota: el código fuente del backend (`index.js`) aún no está incluido. Una vez creado, el servidor escuchará en el puerto definido en `.env` (por defecto `3000`).
+El servidor escucha en el puerto definido en `.env` (por defecto `3000`).
+Endpoints disponibles:
+- `GET /` — info de la API
+- `GET /health` — chequeo de salud
+- `GET /api/ofertas` — ultimas ofertas (consulta tabla `ofertas` en Supabase)
+- `GET /api/productos?search=<texto>` — buscar productos por nombre
 
 ## Variables de entorno
 El backend necesita un archivo `.env` con las siguientes variables (ver `backend/.env.example`):
@@ -71,7 +77,7 @@ El backend necesita un archivo `.env` con las siguientes variables (ver `backend
 **Importante:** nunca subas tu archivo `.env` al repositorio. Ya está incluido en `.gitignore`.
 
 ## Estado de los módulos
-- ✅ `backend/` — dependencias configuradas (Express + Supabase)
+- ✅ `backend/` — API Express con Supabase, lista para correr
 - ⏳ `scraper/` — pendiente de implementar
 - ⏳ `frontend-web/` — pendiente de implementar
 - ⏳ `mobile/` — pendiente de implementar
