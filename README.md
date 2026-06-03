@@ -97,7 +97,7 @@ El backend necesita un archivo `.env` con las siguientes variables (ver `backend
 ## Estado de los módulos
 - ✅ `supabase/` — schema SQL + seed listos para correr
 - ✅ `backend/` — API Express con todos los endpoints
-- ⏳ `frontend-web/` — pendiente
-- ⏳ `scraper/` — pendiente
+- ✅ `frontend-web/` — Next.js 14 + Tailwind, todas las páginas
+- ✅ `scraper/` — Python + Playwright, scraper de Walmart GT + modo mock + GitHub Action cada 6h
 - ⏳ `mobile/` — pendiente
 - ⏳ Bot de Telegram — pendiente
