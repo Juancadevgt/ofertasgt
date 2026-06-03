@@ -17,6 +17,7 @@ ofertas-guatemala/
 ├── scraper/        → Scraper Python (corre en GitHub Actions cada 6h)
 ├── frontend-web/   → Web Next.js (desplegada en Vercel)
 ├── mobile/         → App Expo React Native (Android + iOS)
+├── supabase/       → Schema SQL y datos seed para la base de datos
 └── .github/
     └── workflows/  → Automatización del scraper
 
@@ -43,16 +44,24 @@ git clone https://github.com/Juancadevgt/ofertasgt.git
 cd ofertasgt
 ```
 
-### 2. Configurar el backend
+### 2. Crear las tablas en Supabase
+1. Entra a tu proyecto en [supabase.com](https://supabase.com/) y abre **SQL Editor**
+2. Copia y corre el contenido de [`supabase/schema.sql`](supabase/schema.sql)
+3. (Opcional, recomendado) Copia y corre [`supabase/seed.sql`](supabase/seed.sql) para tener datos de muestra
+
+Más detalle en [supabase/README.md](supabase/README.md).
+
+### 3. Configurar el backend
 ```bash
 cd backend
 npm install
 cp .env.example .env
 ```
 
-Luego edita `backend/.env` y reemplaza los valores con tus credenciales reales de Supabase.
+Luego edita `backend/.env` con tus credenciales reales de Supabase
+(`SUPABASE_URL` y `SUPABASE_KEY` están en *Project Settings → API* en Supabase).
 
-### 3. Ejecutar el backend
+### 4. Ejecutar el backend
 ```bash
 npm start          # modo normal
 npm run dev        # modo con reinicio automatico al editar (node --watch)
@@ -60,10 +69,19 @@ npm run dev        # modo con reinicio automatico al editar (node --watch)
 
 El servidor escucha en el puerto definido en `.env` (por defecto `3000`).
 Endpoints disponibles:
-- `GET /` — info de la API
-- `GET /health` — chequeo de salud
-- `GET /api/ofertas` — ultimas ofertas (consulta tabla `ofertas` en Supabase)
-- `GET /api/productos?search=<texto>` — buscar productos por nombre
+
+| Método | Ruta                                | Descripción                                        |
+|--------|-------------------------------------|----------------------------------------------------|
+| GET    | `/`                                 | Info de la API                                      |
+| GET    | `/health`                           | Chequeo de salud                                    |
+| GET    | `/api/ofertas`                      | Lista ofertas (filtros: `super`, `categoria`, `search`, `semaforo`, `canasta`, `limit`) |
+| GET    | `/api/ofertas/:id`                  | Detalle de una oferta                               |
+| GET    | `/api/productos`                    | Lista productos (filtros: `search`, `categoria`, `canasta`) |
+| GET    | `/api/productos/:id`                | Producto + ofertas activas + historial 24m          |
+| GET    | `/api/supermercados`                | Lista de supermercados                              |
+| GET    | `/api/categorias`                   | Lista de categorías                                 |
+| POST   | `/api/alertas`                      | Suscribirse a alertas Telegram para un producto     |
+| DELETE | `/api/alertas/:id`                  | Cancelar una alerta                                 |
 
 ## Variables de entorno
 El backend necesita un archivo `.env` con las siguientes variables (ver `backend/.env.example`):
@@ -77,7 +95,9 @@ El backend necesita un archivo `.env` con las siguientes variables (ver `backend
 **Importante:** nunca subas tu archivo `.env` al repositorio. Ya está incluido en `.gitignore`.
 
 ## Estado de los módulos
-- ✅ `backend/` — API Express con Supabase, lista para correr
-- ⏳ `scraper/` — pendiente de implementar
-- ⏳ `frontend-web/` — pendiente de implementar
-- ⏳ `mobile/` — pendiente de implementar
+- ✅ `supabase/` — schema SQL + seed listos para correr
+- ✅ `backend/` — API Express con todos los endpoints
+- ⏳ `frontend-web/` — pendiente
+- ⏳ `scraper/` — pendiente
+- ⏳ `mobile/` — pendiente
+- ⏳ Bot de Telegram — pendiente
